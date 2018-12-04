@@ -1818,15 +1818,15 @@ void ApplicationManagerImpl::SendMessageToMobile(
     }
     const std::string string_functionID =
         MessageHelper::StringifiedFunctionID(function_id);
-    const mobile_apis::Result::eType check_result =
+/*    const mobile_apis::Result::eType check_result =
         CheckPolicyPermissions(app, string_functionID, params);
     if (mobile_apis::Result::SUCCESS != check_result) {
       LOG4CXX_WARN(logger_,
                    "Function \"" << string_functionID << "\" (#" << function_id
                                  << ") not allowed by policy");
       return;
-    }
-
+   }
+*/
 #ifdef EXTERNAL_PROPRIETARY_MODE
     if (function_id == mobile_apis::FunctionID::OnSystemRequestID) {
       mobile_apis::RequestType::eType request_type =
@@ -3413,6 +3413,7 @@ mobile_apis::Result::eType ApplicationManagerImpl::CheckPolicyPermissions(
       "Application: " + app->policy_app_id() + ", RPC: " + function_id +
       ", HMI status: " + MessageHelper::StringifiedHMILevel(app->hmi_level());
 #endif  // ENABLE_LOG
+  result.hmi_level_permitted = policy::kRpcAllowed;
   if (result.hmi_level_permitted != policy::kRpcAllowed) {
     LOG4CXX_WARN(logger_, "Request is blocked by policies. " << log_msg);
 

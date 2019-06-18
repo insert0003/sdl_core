@@ -31,7 +31,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 set (PROJECT smartDeviceLinkCore)
-project (${PROJECT})
+#project (${PROJECT})
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/tools/cmake/modules/")
 
 include(${CMAKE_SOURCE_DIR}/tools/cmake/helpers/platform.cmake)
@@ -42,7 +42,7 @@ set (HMI "web" CACHE STRING "HMI type")
 option(HMI2 "Use Qt HMI" OFF)
 option(EXTENDED_MEDIA_MODE "Turn on and off extended Madia Manager features relates to PulseAudio A2DP and GStreamer" OFF)
 option(BUILD_SHARED_LIBS "Build all libraries as shared (if ON) or static (if OFF)" OFF)
-option(BUILD_BT_SUPPORT "Bluetooth support" ON)
+option(BUILD_BT_SUPPORT "Bluetooth support" OFF)
 option(BUILD_USB_SUPPORT "libusb support" ON)
 option(BUILD_BACKTRACE_SUPPORT "backtrace support" ON)
 option(BUILD_TESTS "Possibility to build and run tests" OFF)
@@ -193,10 +193,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 # Please do not change compiler/linker flags if You do not know how particular
 # flag is handled by CMake
-set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
+#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
 set(ARCHIVE_OUTPUT_DIRECTORY ./bin)
 
-set(CMAKE_CXX_FLAGS "-fPIC -std=gnu++0x -Wall -Werror -Wno-deprecated-declarations -Wuninitialized -Wvla")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=gnu++0x -Wall -Werror -Wno-deprecated-declarations -Wuninitialized -Wvla")
 
 if (USE_GOLD_LD)
   execute_process(COMMAND ld -v OUTPUT_VARIABLE result)
@@ -422,7 +422,7 @@ SET(RPATH_DIRECTORIES
 )
 SET(CMAKE_SKIP_BUILD_RPATH FALSE)
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-SET(CMAKE_INSTALL_RPATH "${RPATH_DIRECTORIES}")
+#SET(CMAKE_INSTALL_RPATH "${RPATH_DIRECTORIES}")
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 
@@ -440,7 +440,7 @@ endif()
 add_subdirectory(./src/3rd_party-static)
 
 # --- Tools
-add_subdirectory(./tools)
+#add_subdirectory(./tools)
 
 # --- Components
 add_subdirectory(./src/components)

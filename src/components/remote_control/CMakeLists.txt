@@ -67,7 +67,8 @@ endif()
 
 
 install(TARGETS ${target}
-  DESTINATION ${install_destination}
+#  DESTINATION ${install_destination}
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
     GROUP_READ GROUP_EXECUTE
     WORLD_READ WORLD_EXECUTE
@@ -75,7 +76,8 @@ install(TARGETS ${target}
 
 install(
   FILES ${FILES_FOR_COPY}
-  DESTINATION ${install_destination}
+#  DESTINATION ${install_destination}
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 if(BUILD_TESTS)
